@@ -27,9 +27,9 @@ describe("Home page", () => {
     expect(screen.getAllByRole("link", { name: /rezerwuj online/i })[0]).toBeInTheDocument();
     expect(screen.getByTitle(/widżet rezerwacji online/i)).toBeInTheDocument();
     expect(screen.getByTitle(/widżet terminów w hero/i)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /otwórz pełną galerię/i })).toHaveAttribute("href", "/galeria");
+    expect(screen.getByRole("link", { name: /zobacz wszystkie zdjęcia/i })).toHaveAttribute("href", "/galeria");
     expect(screen.getByText(/6 wybranych zdjęć/i)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /otwórz pełną sekcję bloga/i })).toHaveAttribute("href", "/blog");
+    expect(screen.getByRole("link", { name: /przejdź do bloga/i })).toHaveAttribute("href", "/blog");
   });
 
   it("toggles faq answers and exposes the booking widget", async () => {
@@ -66,7 +66,7 @@ describe("Home page", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole("heading", { name: /pełna galeria domków na zrąbku\./i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /galeria domków na zrąbku\./i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /wróć na stronę główną/i })).toHaveAttribute("href", "/");
   });
 
@@ -77,7 +77,7 @@ describe("Home page", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole("heading", { name: /pełna sekcja bloga domków na zrąbku\./i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /blog o spokojnym podhalu\./i })).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: /przejdź do artykułu/i }).length).toBeGreaterThan(0);
   });
 

@@ -40,7 +40,7 @@ export function FaqSection() {
       <SectionIntro
         eyebrow="FAQ"
         title="Lokalne pytania, konkretne odpowiedzi."
-        description="Sekcja Q&A rozszerzona o pytania, które naprawdę pojawiają się przy planowaniu noclegu w Zębie, Nowem Bystrym i pod Gubałówką."
+        description="Zebraliśmy pytania, które najczęściej pojawiają się przed przyjazdem do Zębu, Nowego Bystrego i okolic Gubałówki."
       />
       <div className="mt-12 divide-y divide-[rgba(137,107,65,0.16)] rounded-[2.2rem] border border-[rgba(137,107,65,0.16)] bg-[rgba(255,250,245,0.8)] px-6 sm:px-8">
         {faqItems.map((item, index) => {
@@ -80,7 +80,7 @@ export function ContactSection() {
           <SectionIntro
             eyebrow="Rezerwacja online i kontakt"
             title="Sprawdź termin i zarezerwuj bezpośrednio."
-            description="Zamiast formularza demo sekcja prowadzi teraz do realnej ścieżki rezerwacji. Po lewej zostaje szybki kontakt telefoniczny, a po prawej działa osadzony widżet."
+            description="Tutaj możesz od razu sprawdzić termin, przejść do rezerwacji albo skontaktować się z nami telefonicznie."
             dark
           />
           <Reveal delayClassName="delay-1" className="grid gap-4 text-[var(--color-cream)]">
@@ -90,7 +90,7 @@ export function ContactSection() {
             </a>
             <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="contact-chip">
               <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-xs font-semibold uppercase tracking-[0.2em]">24/7</span>
-              <span>Rezerwacja online w nowym oknie</span>
+              <span>Przejdź do rezerwacji online</span>
             </a>
           </Reveal>
         </div>
@@ -99,7 +99,7 @@ export function ContactSection() {
             <iframe title="Widżet rezerwacji online" src={bookingWidgetUrl} className="booking-widget-frame" loading="lazy" />
           </div>
           <div className="mt-4 flex flex-col gap-3 px-2 pb-2 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-[rgba(255,243,226,0.68)]">Jeśli widżet otwiera się wygodniej w osobnej karcie, użyj szybkiego przejścia poniżej.</p>
+            <p className="text-sm text-[rgba(255,243,226,0.68)]">Jeśli wolisz, możesz też otworzyć rezerwację w osobnej karcie.</p>
             <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="button-primary justify-center">
               Otwórz rezerwację
             </a>

@@ -153,40 +153,40 @@ const fallbackGalleryMeta = (fileName: string): Omit<GalleryPhoto, "src"> => {
 
   if (numericId >= 72000) {
     return {
-      alt: "Zimowy kadr zewnętrzny domków i ich otoczenia",
-      title: "Kadr zewnętrzny",
-      description: "Zimowe ujęcie domków, wejścia albo najbliższego otoczenia.",
+      alt: "Zimowy widok domków i ich otoczenia",
+      title: "Zimowy widok",
+      description: "Zimowy kadr pokazujący domki, wejście lub najbliższe otoczenie.",
     };
   }
 
   if (numericId >= 71750) {
     return {
-      alt: "Kadr wejścia albo najbliższego otoczenia domków",
-      title: "Wejście i otoczenie",
-      description: "Ujęcie pokazujące dojście, wejście lub najbliższą strefę wokół domków.",
+      alt: "Widok wejścia i najbliższego otoczenia domków",
+      title: "Przy domkach",
+      description: "Widok dojścia, wejścia lub spokojnego otoczenia wokół domków.",
     };
   }
 
   if (numericId >= 71400) {
     return {
-      alt: "Kadr wyposażenia wnętrza, kuchni lub łazienki",
-      title: "Detal wyposażenia",
-      description: "Kadr skupiony na wyposażeniu i wykończeniu wnętrz domków.",
+      alt: "Detal wnętrza, kuchni lub łazienki",
+      title: "Detal wnętrza",
+      description: "Zbliżenie na wyposażenie i wykończenie jednego z domków.",
     };
   }
 
   if (numericId >= 70770) {
     return {
-      alt: "Kadr sypialni albo części mieszkalnej z drewnianym wykończeniem",
-      title: "Kadr wnętrza",
-      description: "Ujęcie wnętrza pokazujące sypialnię lub część mieszkalną jednego z domków.",
+      alt: "Widok sypialni lub części dziennej z drewnianym wykończeniem",
+      title: "Wnętrze domku",
+      description: "Wnętrze pokazujące sypialnię lub część dzienną jednego z domków.",
     };
   }
 
   return {
-    alt: "Kadr wnętrza jednego z domków z drewnianym wykończeniem",
-    title: "Wnętrze domków",
-    description: "Jedno z ujęć wnętrza pokazujących drewno, detale i spokojny charakter miejsca.",
+    alt: "Wnętrze jednego z domków z drewnianym wykończeniem",
+    title: "Spokojne wnętrze",
+    description: "Jedno ze zdjęć wnętrza pokazujących drewno, detale i spokojny charakter miejsca.",
   };
 };
 

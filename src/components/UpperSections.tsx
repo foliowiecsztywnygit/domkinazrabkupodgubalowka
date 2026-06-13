@@ -261,7 +261,7 @@ export function GallerySection() {
       <SectionIntro
         eyebrow="Galeria"
         title="Wybrane kadry z domków i otoczenia."
-        description="Na stronie głównej pokazujemy tylko kilka najmocniejszych ujęć. Pełny komplet zdjęć otworzysz w osobnej podstronie."
+        description="Na początek kilka kadrów, które najlepiej oddają klimat miejsca. Więcej zdjęć czeka w pełnej galerii."
       />
       <div className="mt-6 rounded-full border border-[rgba(137,107,65,0.16)] bg-[rgba(255,251,247,0.84)] px-5 py-3 text-xs uppercase tracking-[0.24em] text-[var(--color-muted)]">
         {homeGalleryPhotos.length} wybranych zdjęć
@@ -275,7 +275,7 @@ export function GallerySection() {
       </div>
       <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
         <Link to="/galeria" className="button-primary">
-          Otwórz pełną galerię
+          Zobacz wszystkie zdjęcia
         </Link>
       </div>
     </section>
@@ -289,8 +289,8 @@ export function FullGallerySection() {
     <section className="section-shell pt-36">
       <SectionIntro
         eyebrow="Galeria"
-        title="Pełna galeria Domków na Zrąbku."
-        description="Wszystkie aktualne zdjęcia domków i ich otoczenia zebrane w jednym miejscu. Otwórz dowolny kadr i przeglądaj całość w lightboxie."
+        title="Galeria Domków na Zrąbku."
+        description="Zdjęcia wnętrz, otoczenia i detali, które najlepiej pokazują charakter tego miejsca."
       />
       <div className="mt-6 flex flex-wrap items-center gap-4">
         <div className="rounded-full border border-[rgba(137,107,65,0.16)] bg-[rgba(255,251,247,0.84)] px-5 py-3 text-xs uppercase tracking-[0.24em] text-[var(--color-muted)]">

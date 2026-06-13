@@ -45,7 +45,7 @@ export function BlogPreviewSection() {
       <SectionIntro
         eyebrow="Blog"
         title="Lokalne przewodniki i spokojne inspiracje z Podhala."
-        description="Krótki przegląd tematów, które pomagają zaplanować pobyt w Zębie, Nowem Bystrym i pod Gubałówką bez turystycznego pośpiechu."
+        description="Kilka spokojnych tekstów o Zębie, Gubałówce i rytmie Podhala, które dobrze czyta się przed wyjazdem i jeszcze lepiej już na miejscu."
       />
       <div className="mt-14 grid gap-5 lg:grid-cols-3">
         {featuredBlogArticles.map((article, index) => (
@@ -56,7 +56,7 @@ export function BlogPreviewSection() {
       </div>
       <div className="mt-10 flex">
         <Link to="/blog" className="button-secondary">
-          Otwórz pełną sekcję bloga
+          Przejdź do bloga
         </Link>
       </div>
     </section>
@@ -68,8 +68,8 @@ export function BlogArchiveSection() {
     <section className="section-shell pt-36">
       <SectionIntro
         eyebrow="Blog"
-        title="Pełna sekcja bloga Domków na Zrąbku."
-        description="Artykuły o Zębie, Gubałówce, spokojnym wypoczynku i lokalnym rytmie Podhala. Każdy wpis ma własną podstronę i prowadzi dalej do powiązanych tematów."
+        title="Blog o spokojnym Podhalu."
+        description="Teksty o Zębie, spacerach pod Gubałówką, dobrych adresach i wypoczynku, który nie potrzebuje pośpiechu."
       />
       <div className="mt-8 flex flex-wrap gap-4">
         <Link to="/" className="button-primary">
@@ -138,7 +138,7 @@ export function BlogArticleSection({ article }: { article: BlogArticle }) {
         <p className="section-kicker">Podobne artykuły</p>
         <h2 className="mt-4 font-display text-4xl text-[var(--color-deep)]">Czytaj dalej w podobnym rytmie.</h2>
         <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--color-muted)]">
-          Zamiast technicznych linków na końcu wpisu, tutaj znajdziesz kolejne teksty, które naturalnie rozwijają temat pobytu, spacerów i lokalnego rytmu Podhala.
+          Jeśli chcesz zostać tu jeszcze chwilę dłużej, sięgnij po kolejne teksty o pobycie, spacerach i spokojniejszej stronie Podhala.
         </p>
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {relatedArticles.map((relatedArticle) => (
