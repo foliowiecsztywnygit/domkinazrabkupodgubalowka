@@ -199,6 +199,7 @@ export const contactDetails = {
   reviewCount: 27,
 };
 
+export const hotresIntegrationEnabled = false;
 export const bookingWidgetUrl = createBookingWidgetUrl({ header: 1 });
 export const heroBookingWidgetUrl = createBookingWidgetUrl({ header: 0 });
 

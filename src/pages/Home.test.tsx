@@ -24,15 +24,15 @@ describe("Home page", () => {
     expect(screen.getByRole("heading", { name: /dopieszczony pobyt w dobrej lokalizacji\./i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /lokalne pytania, konkretne odpowiedzi\./i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /lokalne przewodniki i spokojne inspiracje z podhala\./i })).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: /rezerwuj online/i })[0]).toBeInTheDocument();
-    expect(screen.getByTitle(/widżet rezerwacji online/i)).toBeInTheDocument();
-    expect(screen.getByTitle(/widżet terminów w hero/i)).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: /zapytaj o termin/i })[0]).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /przejdź do formularza/i })).toBeInTheDocument();
+    expect(screen.getByRole("form", { name: /formularz zapytania o pobyt/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /zobacz wszystkie zdjęcia/i })).toHaveAttribute("href", "/galeria");
     expect(screen.getByText(/6 wybranych zdjęć/i)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /przejdź do bloga/i })).toHaveAttribute("href", "/blog");
   });
 
-  it("toggles faq answers and exposes the booking widget", async () => {
+  it("toggles faq answers and exposes the inquiry cta", async () => {
     const user = userEvent.setup();
     render(
       <MemoryRouter>
@@ -42,9 +42,9 @@ describe("Home page", () => {
 
     await user.click(screen.getAllByRole("button", { name: /czy w obiekcie jest wi-fi\?/i })[0]);
     expect(screen.getAllByText(/szczegóły dotyczące sieci najlepiej potwierdzić przy rezerwacji/i)[0]).toBeVisible();
-    expect(screen.getAllByRole("link", { name: /otwórz rezerwację/i })[0]).toHaveAttribute(
+    expect(screen.getAllByRole("link", { name: /wyślij zapytanie/i })[0]).toHaveAttribute(
       "href",
-      expect.stringContaining("roomadmin.pl/widget/reservation-v2/start"),
+      expect.stringContaining("sms:+48696253669"),
     );
   });
 

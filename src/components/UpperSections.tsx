@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CalendarDays, CarFront, ChevronLeft, ChevronRight, MapPinned, Menu, Sparkles, Trees, X } from "lucide-react";
+import { CalendarDays, CarFront, ChevronLeft, ChevronRight, MapPinned, Menu, MessageSquare, Phone, Sparkles, Trees, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 import { Reveal, SectionIntro } from "@/components/SectionAtoms";
 import { useParallaxOffset } from "@/hooks/useParallaxOffset";
 import { cn } from "@/lib/utils";
-import { aboutPhoto, bookingWidgetUrl, contactDetails, galleryPhotos, heroBookingWidgetUrl, heroSlides, homeGalleryPhotos, navItems, valueProps } from "@/data/site-content";
+import { aboutPhoto, bookingWidgetUrl, contactDetails, galleryPhotos, heroBookingWidgetUrl, heroSlides, homeGalleryPhotos, hotresIntegrationEnabled, navItems, valueProps } from "@/data/site-content";
 
 const valueIcons = {
   map: MapPinned,
@@ -44,7 +44,15 @@ export function Navbar() {
           </Link>
         </nav>
         <div className="flex items-center gap-3">
-          <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="button-primary hidden sm:inline-flex">REZERWACJA</a>
+          {hotresIntegrationEnabled ? (
+            <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="button-primary hidden sm:inline-flex">
+              REZERWACJA
+            </a>
+          ) : (
+            <a href="#kontakt" className="button-primary hidden sm:inline-flex">
+              ZAPYTAJ O TERMIN
+            </a>
+          )}
           <button
             type="button"
             className="inline-flex rounded-full border border-[rgba(214,178,117,0.28)] bg-[rgba(255,255,255,0.03)] p-3 text-[var(--color-cream)] lg:hidden"
@@ -125,9 +133,15 @@ export function HeroSection() {
               Dopieszczony pobyt w dobrej lokalizacji. Poranki z widokiem, miękkie światło na drewnie i spokojna baza wypadowa pod Gubałówką.
             </Reveal>
             <Reveal delayClassName="delay-3" className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="hero-cta-primary">
-                Rezerwuj online
-              </a>
+              {hotresIntegrationEnabled ? (
+                <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="hero-cta-primary">
+                  Rezerwuj online
+                </a>
+              ) : (
+                <a href="#kontakt" className="hero-cta-primary">
+                  Zapytaj o termin
+                </a>
+              )}
               <a href="#galeria" className="button-secondary">
                 Zobacz galerię
               </a>
@@ -149,10 +163,40 @@ export function HeroSection() {
               ))}
             </Reveal>
           </div>
-          <HeroBookingCard />
+          {hotresIntegrationEnabled ? <HeroBookingCard /> : <HeroInquiryCard />}
         </div>
       </div>
     </section>
+  );
+}
+
+function HeroInquiryCard() {
+  return (
+    <Reveal delayClassName="delay-2" className="hero-widget-card self-end">
+      <div className="hero-widget-card__header">
+        <div className="hero-widget-card__icon">
+          <MessageSquare size={18} strokeWidth={1.7} />
+        </div>
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.32em] text-[rgba(255,239,212,0.54)]">Zapytania</p>
+          <p className="mt-2 text-lg text-[var(--color-cream)] sm:text-xl">Wyślij szybkie zapytanie o termin</p>
+        </div>
+      </div>
+      <div className="hero-widget-card__body flex flex-col justify-between gap-5 p-1">
+        <p className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] px-5 py-4 text-sm leading-7 text-[rgba(255,243,226,0.78)]">
+          Zamiast rezerwacji online kierujemy teraz do krótkiego formularza. Zostaw datę, liczbę gości i numer telefonu, a wrócimy z odpowiedzią.
+        </p>
+        <div className="grid gap-3">
+          <a href="#kontakt" className="button-primary justify-center">
+            Przejdź do formularza
+          </a>
+          <a href={contactDetails.phoneHref} className="button-secondary justify-center border-white/15 text-[var(--color-cream)] hover:bg-white/10">
+            <Phone size={16} strokeWidth={1.6} />
+            <span>Zadzwoń: {contactDetails.phone}</span>
+          </a>
+        </div>
+      </div>
+    </Reveal>
   );
 }
 

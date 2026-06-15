@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { Reveal, SectionIntro } from "@/components/SectionAtoms";
 import { cn } from "@/lib/utils";
-import { bookingWidgetUrl, contactDetails, faqItems, navItems, reviews, socialItems } from "@/data/site-content";
+import { bookingWidgetUrl, contactDetails, faqItems, hotresIntegrationEnabled, navItems, reviews, socialItems } from "@/data/site-content";
 
 export function ReviewsSection() {
   return (
@@ -73,14 +73,72 @@ export function FaqSection() {
 }
 
 export function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    arrival: "",
+    departure: "",
+    guests: "2",
+    message: "",
+  });
+  const smsNumber = contactDetails.phoneHref.replace("tel:", "");
+  const smsBody = [
+    "Dzien dobry, prosze o informacje o dostepnosci domku.",
+    `Imie: ${formData.name || "-"}`,
+    `Telefon: ${formData.phone || "-"}`,
+    `Termin od: ${formData.arrival || "-"}`,
+    `Termin do: ${formData.departure || "-"}`,
+    `Liczba gosci: ${formData.guests || "-"}`,
+    `Dodatkowe informacje: ${formData.message || "-"}`,
+  ].join("\n");
+  const smsHref = `sms:${smsNumber}?body=${encodeURIComponent(smsBody)}`;
+
+  if (hotresIntegrationEnabled) {
+    return (
+      <section id="kontakt" className="section-shell">
+        <div className="dark-panel grid gap-8 overflow-hidden px-6 py-8 sm:px-8 sm:py-10 lg:grid-cols-[0.9fr_1.1fr] lg:px-12 lg:py-14">
+          <div className="flex flex-col justify-between gap-8">
+            <SectionIntro
+              eyebrow="Rezerwacja online i kontakt"
+              title="Sprawdź termin i zarezerwuj bezpośrednio."
+              description="Tutaj możesz od razu sprawdzić termin, przejść do rezerwacji albo skontaktować się z nami telefonicznie."
+              dark
+            />
+            <Reveal delayClassName="delay-1" className="grid gap-4 text-[var(--color-cream)]">
+              <a href={contactDetails.phoneHref} className="contact-chip">
+                <Phone size={18} strokeWidth={1.6} />
+                <span>{contactDetails.phone}</span>
+              </a>
+              <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="contact-chip">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-xs font-semibold uppercase tracking-[0.2em]">24/7</span>
+                <span>Przejdź do rezerwacji online</span>
+              </a>
+            </Reveal>
+          </div>
+          <Reveal delayClassName="delay-2" className="rounded-[2.2rem] border border-white/10 bg-white/[0.04] p-3 backdrop-blur-sm sm:p-4">
+            <div className="booking-widget-shell">
+              <iframe title="Widżet rezerwacji online" src={bookingWidgetUrl} className="booking-widget-frame" loading="lazy" />
+            </div>
+            <div className="mt-4 flex flex-col gap-3 px-2 pb-2 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm text-[rgba(255,243,226,0.68)]">Jeśli wolisz, możesz też otworzyć rezerwację w osobnej karcie.</p>
+              <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="button-primary justify-center">
+                Otwórz rezerwację
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="kontakt" className="section-shell">
       <div className="dark-panel grid gap-8 overflow-hidden px-6 py-8 sm:px-8 sm:py-10 lg:grid-cols-[0.9fr_1.1fr] lg:px-12 lg:py-14">
         <div className="flex flex-col justify-between gap-8">
           <SectionIntro
-            eyebrow="Rezerwacja online i kontakt"
-            title="Sprawdź termin i zarezerwuj bezpośrednio."
-            description="Tutaj możesz od razu sprawdzić termin, przejść do rezerwacji albo skontaktować się z nami telefonicznie."
+            eyebrow="Zapytanie i kontakt"
+            title="Zapytaj o termin, a wrócimy z odpowiedzią."
+            description="Zamiast kierować do rezerwacji online, zbieramy teraz krótkie zapytania. Uzupełnij formularz lub zadzwoń bezpośrednio."
             dark
           />
           <Reveal delayClassName="delay-1" className="grid gap-4 text-[var(--color-cream)]">
@@ -88,22 +146,94 @@ export function ContactSection() {
               <Phone size={18} strokeWidth={1.6} />
               <span>{contactDetails.phone}</span>
             </a>
-            <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="contact-chip">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-xs font-semibold uppercase tracking-[0.2em]">24/7</span>
-              <span>Przejdź do rezerwacji online</span>
+            <a href={smsHref} className="contact-chip">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-xs font-semibold uppercase tracking-[0.2em]">SMS</span>
+              <span>Wyślij szybkie zapytanie</span>
             </a>
+            <p className="max-w-md text-sm leading-7 text-[rgba(255,243,226,0.68)]">
+              Hotres pozostaje w kodzie, ale na ten moment formularz i kontakt bezpośredni są główną ścieżką pozyskiwania zapytań.
+            </p>
           </Reveal>
         </div>
-        <Reveal delayClassName="delay-2" className="rounded-[2.2rem] border border-white/10 bg-white/[0.04] p-3 backdrop-blur-sm sm:p-4">
-          <div className="booking-widget-shell">
-            <iframe title="Widżet rezerwacji online" src={bookingWidgetUrl} className="booking-widget-frame" loading="lazy" />
-          </div>
-          <div className="mt-4 flex flex-col gap-3 px-2 pb-2 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-[rgba(255,243,226,0.68)]">Jeśli wolisz, możesz też otworzyć rezerwację w osobnej karcie.</p>
-            <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="button-primary justify-center">
-              Otwórz rezerwację
-            </a>
-          </div>
+        <Reveal delayClassName="delay-2" className="rounded-[2.2rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm sm:p-6">
+          <form className="grid gap-4" aria-label="Formularz zapytania o pobyt">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+                <span>Imię</span>
+                <input
+                  type="text"
+                  value={formData.name}
+                  onChange={(event) => setFormData((current) => ({ ...current, name: event.target.value }))}
+                  className="rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition placeholder:text-[rgba(255,243,226,0.36)] focus:border-[var(--color-accent)]"
+                  placeholder="Jak mamy się do Ciebie zwracać?"
+                />
+              </label>
+              <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+                <span>Telefon</span>
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(event) => setFormData((current) => ({ ...current, phone: event.target.value }))}
+                  className="rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition placeholder:text-[rgba(255,243,226,0.36)] focus:border-[var(--color-accent)]"
+                  placeholder="Numer do kontaktu"
+                />
+              </label>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+                <span>Przyjazd</span>
+                <input
+                  type="date"
+                  value={formData.arrival}
+                  onChange={(event) => setFormData((current) => ({ ...current, arrival: event.target.value }))}
+                  className="rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition focus:border-[var(--color-accent)]"
+                />
+              </label>
+              <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+                <span>Wyjazd</span>
+                <input
+                  type="date"
+                  value={formData.departure}
+                  onChange={(event) => setFormData((current) => ({ ...current, departure: event.target.value }))}
+                  className="rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition focus:border-[var(--color-accent)]"
+                />
+              </label>
+              <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+                <span>Liczba gości</span>
+                <input
+                  type="number"
+                  min="1"
+                  max="12"
+                  value={formData.guests}
+                  onChange={(event) => setFormData((current) => ({ ...current, guests: event.target.value }))}
+                  className="rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition focus:border-[var(--color-accent)]"
+                />
+              </label>
+            </div>
+            <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+              <span>Dodatkowe informacje</span>
+              <textarea
+                rows={5}
+                value={formData.message}
+                onChange={(event) => setFormData((current) => ({ ...current, message: event.target.value }))}
+                className="rounded-[1.4rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition placeholder:text-[rgba(255,243,226,0.36)] focus:border-[var(--color-accent)]"
+                placeholder="Np. domek dla rodziny, pobyt z dzieckiem, pytanie o parking lub zwierzęta."
+              />
+            </label>
+            <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm leading-7 text-[rgba(255,243,226,0.68)]">
+                CTA przygotowuje gotową treść zapytania SMS na numer kontaktowy. Dla szybszej odpowiedzi możesz też od razu zadzwonić.
+              </p>
+              <div className="flex flex-col gap-3 sm:min-w-[260px]">
+                <a href={smsHref} className="button-primary justify-center">
+                  Wyślij zapytanie
+                </a>
+                <a href={contactDetails.phoneHref} className="button-secondary justify-center border-white/15 text-[var(--color-cream)] hover:bg-white/10">
+                  Zadzwoń teraz
+                </a>
+              </div>
+            </div>
+          </form>
         </Reveal>
       </div>
     </section>
@@ -117,9 +247,15 @@ export function MobileStickyReservationBar() {
         <a href={contactDetails.phoneHref} className="mobile-sticky-cta__phone">
           {contactDetails.phone}
         </a>
-        <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="mobile-sticky-cta__button">
-          Rezerwuj online
-        </a>
+        {hotresIntegrationEnabled ? (
+          <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="mobile-sticky-cta__button">
+            Rezerwuj online
+          </a>
+        ) : (
+          <a href="#kontakt" className="mobile-sticky-cta__button">
+            Zapytaj o termin
+          </a>
+        )}
       </div>
     </div>
   );
