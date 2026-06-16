@@ -11,11 +11,14 @@ const galleryModules = import.meta.glob("../../Nowe Bystre - gotowe/*.{jpg,jpeg,
 }) as Record<string, string>;
 
 type GalleryPhoto = {
+  fileName: string;
   src: string;
   alt: string;
   title: string;
   description: string;
 };
+
+type GalleryPhotoMeta = Omit<GalleryPhoto, "fileName" | "src">;
 
 type HeroSlide = {
   src: string;
@@ -40,7 +43,7 @@ const createBookingWidgetUrl = ({ header = 1 }: { header?: 0 | 1 } = {}) => {
   return `https://roomadmin.pl/widget/reservation-v2/start?${params.toString()}`;
 };
 
-const explicitGalleryMeta: Record<string, Omit<GalleryPhoto, "src">> = {
+const explicitGalleryMeta: Record<string, GalleryPhotoMeta> = {
   "DSC07041.jpg": {
     alt: "Drewniana ściana z archiwalną fotografią i detalami wnętrza",
     title: "Detal drewna i historii",
@@ -148,7 +151,7 @@ const explicitGalleryMeta: Record<string, Omit<GalleryPhoto, "src">> = {
   },
 };
 
-const fallbackGalleryMeta = (fileName: string): Omit<GalleryPhoto, "src"> => {
+const fallbackGalleryMeta = (fileName: string): GalleryPhotoMeta => {
   const numericId = Number(fileName.replace(/\D/g, ""));
 
   if (numericId >= 72000) {
@@ -247,6 +250,7 @@ export const galleryPhotos = Object.entries(galleryModules)
     const meta = explicitGalleryMeta[fileName] ?? fallbackGalleryMeta(fileName);
 
     return {
+      fileName,
       src,
       ...meta,
     };
@@ -262,7 +266,7 @@ const homeGalleryFileNames = [
 ] as const;
 
 export const homeGalleryPhotos = homeGalleryFileNames
-  .map((fileName) => galleryPhotos.find((photo) => photo.src.includes(fileName)))
+  .map((fileName) => galleryPhotos.find((photo) => photo.fileName === fileName))
   .filter((photo): photo is (typeof galleryPhotos)[number] => Boolean(photo));
 
 export const valueProps = [

@@ -178,19 +178,19 @@ function HeroInquiryCard() {
           <MessageSquare size={18} strokeWidth={1.7} />
         </div>
         <div>
-          <p className="text-[10px] uppercase tracking-[0.32em] text-[rgba(255,239,212,0.54)]">Zapytania</p>
+          <p className="text-[10px] uppercase tracking-[0.32em] text-[rgba(255,239,212,0.78)]">Zapytania</p>
           <p className="mt-2 text-lg text-[var(--color-cream)] sm:text-xl">Wyślij szybkie zapytanie o termin</p>
         </div>
       </div>
-      <div className="hero-widget-card__body flex flex-col justify-between gap-5 p-1">
-        <p className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] px-5 py-4 text-sm leading-7 text-[rgba(255,243,226,0.78)]">
+      <div className="hero-widget-card__body hero-widget-card__body--inquiry flex flex-col justify-between gap-5 p-5">
+        <p className="rounded-[1.5rem] border border-[rgba(221,182,111,0.22)] bg-[rgba(255,248,235,0.06)] px-5 py-4 text-sm leading-7 text-[rgba(255,243,226,0.92)]">
           Zamiast rezerwacji online kierujemy teraz do krótkiego formularza. Zostaw datę, liczbę gości i numer telefonu, a wrócimy z odpowiedzią.
         </p>
         <div className="grid gap-3">
           <a href="#kontakt" className="button-primary justify-center">
             Przejdź do formularza
           </a>
-          <a href={contactDetails.phoneHref} className="button-secondary justify-center border-white/15 text-[var(--color-cream)] hover:bg-white/10">
+          <a href={contactDetails.phoneHref} className="button-secondary hero-widget-secondary-action justify-center">
             <Phone size={16} strokeWidth={1.6} />
             <span>Zadzwoń: {contactDetails.phone}</span>
           </a>

@@ -151,54 +151,54 @@ export function ContactSection() {
               <span>Wyślij szybkie zapytanie</span>
             </a>
             <p className="max-w-md text-sm leading-7 text-[rgba(255,243,226,0.68)]">
-              Hotres pozostaje w kodzie, ale na ten moment formularz i kontakt bezpośredni są główną ścieżką pozyskiwania zapytań.
+              Napisz lub zadzwoń, a wrócimy z informacją o dostępności i szczegółach pobytu.
             </p>
           </Reveal>
         </div>
         <Reveal delayClassName="delay-2" className="rounded-[2.2rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm sm:p-6">
           <form className="grid gap-4" aria-label="Formularz zapytania o pobyt">
             <div className="grid gap-4 sm:grid-cols-2">
-              <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+              <label className="form-field">
                 <span>Imię</span>
                 <input
                   type="text"
                   value={formData.name}
                   onChange={(event) => setFormData((current) => ({ ...current, name: event.target.value }))}
-                  className="rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition placeholder:text-[rgba(255,243,226,0.36)] focus:border-[var(--color-accent)]"
+                  className="form-field__input"
                   placeholder="Jak mamy się do Ciebie zwracać?"
                 />
               </label>
-              <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+              <label className="form-field">
                 <span>Telefon</span>
                 <input
                   type="tel"
                   value={formData.phone}
                   onChange={(event) => setFormData((current) => ({ ...current, phone: event.target.value }))}
-                  className="rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition placeholder:text-[rgba(255,243,226,0.36)] focus:border-[var(--color-accent)]"
+                  className="form-field__input"
                   placeholder="Numer do kontaktu"
                 />
               </label>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
-              <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+              <label className="form-field">
                 <span>Przyjazd</span>
                 <input
                   type="date"
                   value={formData.arrival}
                   onChange={(event) => setFormData((current) => ({ ...current, arrival: event.target.value }))}
-                  className="rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition focus:border-[var(--color-accent)]"
+                  className="form-field__input"
                 />
               </label>
-              <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+              <label className="form-field">
                 <span>Wyjazd</span>
                 <input
                   type="date"
                   value={formData.departure}
                   onChange={(event) => setFormData((current) => ({ ...current, departure: event.target.value }))}
-                  className="rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition focus:border-[var(--color-accent)]"
+                  className="form-field__input"
                 />
               </label>
-              <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+              <label className="form-field">
                 <span>Liczba gości</span>
                 <input
                   type="number"
@@ -206,29 +206,29 @@ export function ContactSection() {
                   max="12"
                   value={formData.guests}
                   onChange={(event) => setFormData((current) => ({ ...current, guests: event.target.value }))}
-                  className="rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition focus:border-[var(--color-accent)]"
+                  className="form-field__input"
                 />
               </label>
             </div>
-            <label className="grid gap-2 text-sm text-[var(--color-cream)]">
+            <label className="form-field">
               <span>Dodatkowe informacje</span>
               <textarea
                 rows={5}
                 value={formData.message}
                 onChange={(event) => setFormData((current) => ({ ...current, message: event.target.value }))}
-                className="rounded-[1.4rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-cream)] outline-none transition placeholder:text-[rgba(255,243,226,0.36)] focus:border-[var(--color-accent)]"
+                className="form-field__input"
                 placeholder="Np. domek dla rodziny, pobyt z dzieckiem, pytanie o parking lub zwierzęta."
               />
             </label>
             <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm leading-7 text-[rgba(255,243,226,0.68)]">
-                CTA przygotowuje gotową treść zapytania SMS na numer kontaktowy. Dla szybszej odpowiedzi możesz też od razu zadzwonić.
+              <p className="text-sm leading-7 text-[rgba(255,243,226,0.82)]">
+                Przycisk przygotowuje gotową treść wiadomości SMS na numer kontaktowy. Dla szybszej odpowiedzi możesz też od razu zadzwonić.
               </p>
               <div className="flex flex-col gap-3 sm:min-w-[260px]">
                 <a href={smsHref} className="button-primary justify-center">
                   Wyślij zapytanie
                 </a>
-                <a href={contactDetails.phoneHref} className="button-secondary justify-center border-white/15 text-[var(--color-cream)] hover:bg-white/10">
+                <a href={contactDetails.phoneHref} className="button-secondary hero-widget-secondary-action justify-center">
                   Zadzwoń teraz
                 </a>
               </div>
