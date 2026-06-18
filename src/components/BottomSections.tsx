@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronDown, Phone, Quote, Star } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
+import { AvailabilityBar } from "@/components/AvailabilityBar";
 import { Reveal, SectionIntro } from "@/components/SectionAtoms";
 import { cn } from "@/lib/utils";
 import { bookingWidgetUrl, contactDetails, faqItems, hotresIntegrationEnabled, navItems, reviews, socialItems } from "@/data/site-content";
@@ -73,26 +74,6 @@ export function FaqSection() {
 }
 
 export function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    arrival: "",
-    departure: "",
-    guests: "2",
-    message: "",
-  });
-  const smsNumber = contactDetails.phoneHref.replace("tel:", "");
-  const smsBody = [
-    "Dzien dobry, prosze o informacje o dostepnosci domku.",
-    `Imie: ${formData.name || "-"}`,
-    `Telefon: ${formData.phone || "-"}`,
-    `Termin od: ${formData.arrival || "-"}`,
-    `Termin do: ${formData.departure || "-"}`,
-    `Liczba gosci: ${formData.guests || "-"}`,
-    `Dodatkowe informacje: ${formData.message || "-"}`,
-  ].join("\n");
-  const smsHref = `sms:${smsNumber}?body=${encodeURIComponent(smsBody)}`;
-
   if (hotresIntegrationEnabled) {
     return (
       <section id="kontakt" className="section-shell">
@@ -136,9 +117,9 @@ export function ContactSection() {
       <div className="dark-panel grid gap-8 overflow-hidden px-6 py-8 sm:px-8 sm:py-10 lg:grid-cols-[0.9fr_1.1fr] lg:px-12 lg:py-14">
         <div className="flex flex-col justify-between gap-8">
           <SectionIntro
-            eyebrow="Zapytanie i kontakt"
-            title="Zapytaj o termin, a wrócimy z odpowiedzią."
-            description="Zamiast kierować do rezerwacji online, zbieramy teraz krótkie zapytania. Uzupełnij formularz lub zadzwoń bezpośrednio."
+            eyebrow="Terminy i kontakt"
+            title="Sprawdź wolny termin i przejdź od razu do dostępności."
+            description="Na dole strony też możesz wygodnie wybrać daty pobytu i liczbę gości. Całość prowadzi prosto do sprawdzenia dostępności."
             dark
           />
           <Reveal delayClassName="delay-1" className="grid gap-4 text-[var(--color-cream)]">
@@ -146,92 +127,25 @@ export function ContactSection() {
               <Phone size={18} strokeWidth={1.6} />
               <span>{contactDetails.phone}</span>
             </a>
-            <a href={smsHref} className="contact-chip">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-xs font-semibold uppercase tracking-[0.2em]">SMS</span>
-              <span>Wyślij szybkie zapytanie</span>
-            </a>
             <p className="max-w-md text-sm leading-7 text-[rgba(255,243,226,0.68)]">
-              Napisz lub zadzwoń, a wrócimy z informacją o dostępności i szczegółach pobytu.
+              Wybierz termin w nowoczesnym kalendarzu i sprawdź dostępność bez zbędnych kroków.
             </p>
           </Reveal>
         </div>
         <Reveal delayClassName="delay-2" className="rounded-[2.2rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm sm:p-6">
-          <form className="grid gap-4" aria-label="Formularz zapytania o pobyt">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="form-field">
-                <span>Imię</span>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(event) => setFormData((current) => ({ ...current, name: event.target.value }))}
-                  className="form-field__input"
-                  placeholder="Jak mamy się do Ciebie zwracać?"
-                />
-              </label>
-              <label className="form-field">
-                <span>Telefon</span>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(event) => setFormData((current) => ({ ...current, phone: event.target.value }))}
-                  className="form-field__input"
-                  placeholder="Numer do kontaktu"
-                />
-              </label>
+          <form className="grid gap-5" aria-label="Sprawdzarka terminów w sekcji kontakt">
+            <AvailabilityBar variant="contact" />
+            <div className="rounded-[1.6rem] border border-[rgba(221,182,111,0.16)] bg-[rgba(255,248,235,0.05)] px-5 py-4 text-sm leading-7 text-[rgba(255,243,226,0.82)]">
+              Wybierasz termin i liczbę gości tutaj na stronie, a potem przechodzisz prosto do widoku dostępności z już ustawionymi danymi.
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              <label className="form-field">
-                <span>Przyjazd</span>
-                <input
-                  type="date"
-                  value={formData.arrival}
-                  onChange={(event) => setFormData((current) => ({ ...current, arrival: event.target.value }))}
-                  className="form-field__input"
-                />
-              </label>
-              <label className="form-field">
-                <span>Wyjazd</span>
-                <input
-                  type="date"
-                  value={formData.departure}
-                  onChange={(event) => setFormData((current) => ({ ...current, departure: event.target.value }))}
-                  className="form-field__input"
-                />
-              </label>
-              <label className="form-field">
-                <span>Liczba gości</span>
-                <input
-                  type="number"
-                  min="1"
-                  max="12"
-                  value={formData.guests}
-                  onChange={(event) => setFormData((current) => ({ ...current, guests: event.target.value }))}
-                  className="form-field__input"
-                />
-              </label>
-            </div>
-            <label className="form-field">
-              <span>Dodatkowe informacje</span>
-              <textarea
-                rows={5}
-                value={formData.message}
-                onChange={(event) => setFormData((current) => ({ ...current, message: event.target.value }))}
-                className="form-field__input"
-                placeholder="Np. domek dla rodziny, pobyt z dzieckiem, pytanie o parking lub zwierzęta."
-              />
-            </label>
-            <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm leading-7 text-[rgba(255,243,226,0.82)]">
-                Przycisk przygotowuje gotową treść wiadomości SMS na numer kontaktowy. Dla szybszej odpowiedzi możesz też od razu zadzwonić.
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm leading-7 text-[rgba(255,243,226,0.72)]">
+                Jeśli wolisz kontakt bezpośredni, możesz też zadzwonić i potwierdzić szczegóły pobytu.
               </p>
-              <div className="flex flex-col gap-3 sm:min-w-[260px]">
-                <a href={smsHref} className="button-primary justify-center">
-                  Wyślij zapytanie
-                </a>
-                <a href={contactDetails.phoneHref} className="button-secondary hero-widget-secondary-action justify-center">
-                  Zadzwoń teraz
-                </a>
-              </div>
+              <a href={contactDetails.phoneHref} className="button-secondary hero-widget-secondary-action justify-center sm:min-w-[240px]">
+                <Phone size={16} strokeWidth={1.6} />
+                <span>Zadzwoń teraz</span>
+              </a>
             </div>
           </form>
         </Reveal>
@@ -302,6 +216,17 @@ export function Footer() {
             ))}
           </div>
         </div>
+      </div>
+      <div className="mx-auto mt-4 max-w-6xl text-center text-xs tracking-[0.18em] text-[rgba(255,243,226,0.56)]">
+        <span>Wykonanie i Hosting: </span>
+        <a
+          href="https://webbroskidev.pl"
+          target="_blank"
+          rel="noreferrer"
+          className="transition hover:text-[var(--color-accent)]"
+        >
+          Krzysztof Żebrowski
+        </a>
       </div>
     </footer>
   );

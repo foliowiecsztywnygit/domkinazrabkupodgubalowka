@@ -25,15 +25,44 @@ type HeroSlide = {
   alt: string;
 };
 
-const createBookingWidgetUrl = ({ header = 1 }: { header?: 0 | 1 } = {}) => {
+const formatBookingDate = (date: Date) =>
+  `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+
+const addBookingDays = (date: Date, days: number) => {
+  const nextDate = new Date(date);
+  nextDate.setDate(nextDate.getDate() + days);
+  return nextDate;
+};
+
+export const getDefaultBookingDates = () => {
+  const today = new Date();
+
+  return {
+    arrival: formatBookingDate(today),
+    departure: formatBookingDate(addBookingDays(today, 2)),
+  };
+};
+
+export const createBookingWidgetUrl = ({
+  header = 1,
+  arrival,
+  departure,
+  guests = 2,
+}: {
+  header?: 0 | 1;
+  arrival?: string;
+  departure?: string;
+  guests?: number | string;
+} = {}) => {
+  const defaultDates = getDefaultBookingDates();
   const params = new URLSearchParams({
     fh: "68228cb250f36a66ed16139d1a760cbb20a46a37",
-    arrival: "2026-06-13",
-    departure: "2026-06-15",
-    "rooms[0][numberOfGuests]": "2",
+    arrival: arrival ?? defaultDates.arrival,
+    departure: departure ?? defaultDates.departure,
+    "rooms[0][numberOfGuests]": String(guests),
     style: JSON.stringify({
       color_accent: "#7b5730",
-      color_bg: "#fbf7f0",
+      color_bg: "#fbf7f1",
     }),
     header: String(header),
     src: "googlehc",

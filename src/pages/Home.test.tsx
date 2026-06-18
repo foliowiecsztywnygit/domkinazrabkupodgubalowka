@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
@@ -7,6 +7,9 @@ import Home from "@/pages/Home";
 import Gallery from "@/pages/Gallery";
 import Blog from "@/pages/Blog";
 import BlogArticle from "@/pages/BlogArticle";
+
+const formatExpectedDate = (date: Date) =>
+  `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 
 afterEach(() => {
   cleanup();
@@ -24,15 +27,15 @@ describe("Home page", () => {
     expect(screen.getByRole("heading", { name: /dopieszczony pobyt w dobrej lokalizacji\./i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /lokalne pytania, konkretne odpowiedzi\./i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /lokalne przewodniki i spokojne inspiracje z podhala\./i })).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: /sprawdź wolny termin/i })[0]).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: /zapytaj o termin/i })[0]).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /przejdź do formularza/i })).toBeInTheDocument();
-    expect(screen.getByRole("form", { name: /formularz zapytania o pobyt/i })).toBeInTheDocument();
+    expect(screen.getByRole("form", { name: /sprawdzarka terminów w sekcji kontakt/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /zobacz wszystkie zdjęcia/i })).toHaveAttribute("href", "/galeria");
     expect(screen.getByText(/6 wybranych zdjęć/i)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /przejdź do bloga/i })).toHaveAttribute("href", "/blog");
   });
 
-  it("toggles faq answers and exposes the inquiry cta", async () => {
+  it("toggles faq answers and exposes the bottom availability checker", async () => {
     const user = userEvent.setup();
     render(
       <MemoryRouter>
@@ -42,10 +45,28 @@ describe("Home page", () => {
 
     await user.click(screen.getAllByRole("button", { name: /czy w obiekcie jest wi-fi\?/i })[0]);
     expect(screen.getAllByText(/szczegóły dotyczące sieci najlepiej potwierdzić przy rezerwacji/i)[0]).toBeVisible();
-    expect(screen.getAllByRole("link", { name: /wyślij zapytanie/i })[0]).toHaveAttribute(
+    const contactChecker = screen.getByRole("form", { name: /sprawdzarka terminów w sekcji kontakt/i });
+    expect(within(contactChecker).getByRole("link", { name: /sprawdź wolny termin/i })).toHaveAttribute(
       "href",
-      expect.stringContaining("sms:+48696253669"),
+      expect.stringContaining("roomadmin.pl/widget/reservation-v2/start"),
     );
+  });
+
+  it("uses current day in the hero availability bar", () => {
+    const today = new Date();
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const expectedDisplayDate = formatExpectedDate(today).split("-").reverse().join(".");
+    expect(screen.getAllByRole("button", { name: "Przyjazd" })[0]).toHaveTextContent(expectedDisplayDate);
+    expect(screen.getAllByRole("link", { name: /sprawdź wolny termin/i })[0]).toHaveAttribute(
+      "href",
+      expect.stringContaining("roomadmin.pl/widget/reservation-v2/start"),
+    );
+    expect(screen.getAllByRole("button", { name: "Przyjazd" })[1]).toHaveTextContent(expectedDisplayDate);
   });
 
   it("renders a lightweight curated gallery on the home page", () => {

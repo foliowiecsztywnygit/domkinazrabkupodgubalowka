@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CalendarDays, CarFront, ChevronLeft, ChevronRight, MapPinned, Menu, MessageSquare, Phone, Sparkles, Trees, X } from "lucide-react";
+import { CalendarDays, CarFront, ChevronLeft, ChevronRight, MapPinned, Menu, Phone, Sparkles, Trees, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
+import { AvailabilityBar } from "@/components/AvailabilityBar";
 import { Reveal, SectionIntro } from "@/components/SectionAtoms";
 import { useParallaxOffset } from "@/hooks/useParallaxOffset";
 import { cn } from "@/lib/utils";
-import { aboutPhoto, bookingWidgetUrl, contactDetails, galleryPhotos, heroBookingWidgetUrl, heroSlides, homeGalleryPhotos, hotresIntegrationEnabled, navItems, valueProps } from "@/data/site-content";
+import { aboutPhoto, bookingWidgetUrl, contactDetails, createBookingWidgetUrl, galleryPhotos, getDefaultBookingDates, heroSlides, homeGalleryPhotos, hotresIntegrationEnabled, navItems, valueProps } from "@/data/site-content";
 
 const valueIcons = {
   map: MapPinned,
@@ -92,10 +93,20 @@ export function Navbar() {
 
 export function HeroSection() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const defaultBookingDates = useMemo(() => getDefaultBookingDates(), []);
   const parallaxOffset = useParallaxOffset(0.14);
   const imageStyle = useMemo(
     () => ({ transform: `translateY(${Math.min(parallaxOffset, 72)}px) scale(1.08)` }),
     [parallaxOffset],
+  );
+  const availabilityHref = useMemo(
+    () =>
+      createBookingWidgetUrl({
+        header: 1,
+        arrival: defaultBookingDates.arrival,
+        departure: defaultBookingDates.departure,
+      }),
+    [defaultBookingDates.arrival, defaultBookingDates.departure],
   );
 
   useEffect(() => {
@@ -133,15 +144,13 @@ export function HeroSection() {
               Dopieszczony pobyt w dobrej lokalizacji. Poranki z widokiem, miękkie światło na drewnie i spokojna baza wypadowa pod Gubałówką.
             </Reveal>
             <Reveal delayClassName="delay-3" className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              {hotresIntegrationEnabled ? (
-                <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="hero-cta-primary">
-                  Rezerwuj online
-                </a>
-              ) : (
-                <a href="#kontakt" className="hero-cta-primary">
-                  Zapytaj o termin
-                </a>
-              )}
+              <a href={availabilityHref} target="_blank" rel="noreferrer" className="hero-cta-primary">
+                <CalendarDays size={18} strokeWidth={1.7} />
+                <span>Sprawdź wolny termin</span>
+              </a>
+              <a href="#kontakt" className="button-secondary">
+                Zapytaj o termin
+              </a>
               <a href="#galeria" className="button-secondary">
                 Zobacz galerię
               </a>
@@ -163,44 +172,14 @@ export function HeroSection() {
               ))}
             </Reveal>
           </div>
-          {hotresIntegrationEnabled ? <HeroBookingCard /> : <HeroInquiryCard />}
+          <HeroAvailabilityCard />
         </div>
       </div>
     </section>
   );
 }
 
-function HeroInquiryCard() {
-  return (
-    <Reveal delayClassName="delay-2" className="hero-widget-card self-end">
-      <div className="hero-widget-card__header">
-        <div className="hero-widget-card__icon">
-          <MessageSquare size={18} strokeWidth={1.7} />
-        </div>
-        <div>
-          <p className="text-[10px] uppercase tracking-[0.32em] text-[rgba(255,239,212,0.78)]">Zapytania</p>
-          <p className="mt-2 text-lg text-[var(--color-cream)] sm:text-xl">Wyślij szybkie zapytanie o termin</p>
-        </div>
-      </div>
-      <div className="hero-widget-card__body hero-widget-card__body--inquiry flex flex-col justify-between gap-5 p-5">
-        <p className="rounded-[1.5rem] border border-[rgba(221,182,111,0.22)] bg-[rgba(255,248,235,0.06)] px-5 py-4 text-sm leading-7 text-[rgba(255,243,226,0.92)]">
-          Zamiast rezerwacji online kierujemy teraz do krótkiego formularza. Zostaw datę, liczbę gości i numer telefonu, a wrócimy z odpowiedzią.
-        </p>
-        <div className="grid gap-3">
-          <a href="#kontakt" className="button-primary justify-center">
-            Przejdź do formularza
-          </a>
-          <a href={contactDetails.phoneHref} className="button-secondary hero-widget-secondary-action justify-center">
-            <Phone size={16} strokeWidth={1.6} />
-            <span>Zadzwoń: {contactDetails.phone}</span>
-          </a>
-        </div>
-      </div>
-    </Reveal>
-  );
-}
-
-function HeroBookingCard() {
+function HeroAvailabilityCard() {
   return (
     <Reveal delayClassName="delay-2" className="hero-widget-card self-end">
       <div className="hero-widget-card__header">
@@ -208,21 +187,24 @@ function HeroBookingCard() {
           <CalendarDays size={18} strokeWidth={1.7} />
         </div>
         <div>
-          <p className="text-[10px] uppercase tracking-[0.32em] text-[rgba(255,239,212,0.54)]">Terminy</p>
-          <p className="mt-2 text-lg text-[var(--color-cream)] sm:text-xl">Sprawdź dostępność od razu</p>
+          <p className="text-[10px] uppercase tracking-[0.32em] text-[rgba(255,239,212,0.78)]">Terminy</p>
+          <p className="mt-2 text-lg text-[var(--color-cream)] sm:text-xl">Sprawdź dostępność bez opuszczania strony</p>
         </div>
       </div>
-      <div className="hero-widget-card__body">
-        <iframe
-          title="Widżet terminów w hero"
-          src={heroBookingWidgetUrl}
-          className="hero-widget-frame"
-          loading="lazy"
-        />
+      <div className="hero-widget-card__body hero-widget-card__body--inquiry p-5">
+        <p className="rounded-[1.5rem] border border-[rgba(221,182,111,0.22)] bg-[rgba(255,248,235,0.06)] px-5 py-4 text-sm leading-7 text-[rgba(255,243,226,0.92)]">
+          Wybierz przyjazd, wyjazd i liczbę gości. Otworzymy gotowy widok sprawdzania dostępności z terminem ustawionym od dzisiaj.
+        </p>
+        <div className="mt-5">
+          <AvailabilityBar />
+        </div>
+        <div className="mt-4 grid gap-3">
+          <a href={contactDetails.phoneHref} className="button-secondary hero-widget-secondary-action justify-center">
+            <Phone size={16} strokeWidth={1.6} />
+            <span>Zadzwoń: {contactDetails.phone}</span>
+          </a>
+        </div>
       </div>
-      <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="hero-widget-link">
-        Otwórz pełną rezerwację
-      </a>
     </Reveal>
   );
 }
