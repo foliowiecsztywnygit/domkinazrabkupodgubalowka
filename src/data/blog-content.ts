@@ -294,6 +294,136 @@ export const blogArticles: BlogArticle[] = [
       },
     ],
   },
+  {
+    slug: "nocleg-w-zebie-poznaj-najwyzej-polozona-wies",
+    title: "Nocleg w Zębie – poznaj najwyżej położoną wieś w Polsce z widokiem na Tatry",
+    metaTitle: "Nocleg w Zębie z widokiem na Tatry - Domek na Zrąbku",
+    metaDescription: "Szukasz noclegu w górach bez tłumów? Ząb i Nowe Bystre to idealny wybór. Sprawdź Domek na Zrąbku z widokiem na Giewont.",
+    excerpt: "Szukasz idealnego miejsca na wypoczynek w górach, ale przerażają Cię tłumy turystów na Krupówkach? Ząb to najwyżej położona wieś w Polsce i oaza spokoju.",
+    category: "Lokalny przewodnik",
+    readTime: "6 min czytania",
+    seoKeywords: ["nocleg w Zębie", "Domek na Zrąbku", "Nowe Bystre", "Gubałówka noclegi"],
+    internalLinks: [
+      { label: "Strona główna", href: "/" },
+      { label: "Galeria", href: "/galeria" },
+      { label: "Rezerwacja online", href: "/#kontakt" },
+    ],
+    sections: [
+      {
+        heading: "Ząb i Nowe Bystre – dlaczego to lepszy wybór niż zatłoczone Zakopane?",
+        paragraphs: [
+          "Zakopane ma swój urok, jednak w sezonie bywa głośne i niezwykle tłoczne. Ząb oraz sąsiadujące z nim Nowe Bystre to doskonała alternatywa dla tych, którzy chcą poczuć prawdziwą magię gór, nie rezygnując z bliskości największych atrakcji regionu. Wybierając <strong>nocleg w Zębie</strong>, zyskujesz przede wszystkim:",
+          "<ul><li><strong>Święty spokój i ciszę:</strong> Brak zgiełku miasta pozwala na pełną regenerację. Tutaj budzi Cię śpiew ptaków, a nie szum samochodów.</li><li><strong>Czyste powietrze:</strong> Położenie na wysokości ponad 1000 m n.p.m. sprawia, że jesteśmy ponad warstwą smogu, który często spowija niżej położone miejscowości.</li><li><strong>Łatwy dojazd do atrakcji:</strong> Ząb i Nowe Bystre oferują świetną komunikację. W zaledwie kilkanaście minut dotrzesz stąd na Gubałówkę, do basenów termalnych czy stacji narciarskich.</li><li><strong>Autentyczny klimat Podhala:</strong> Miejscowość zachowała swój unikalny, góralski charakter, który poczujesz podczas spacerów.</li></ul>",
+          "Wybierając naszą lokalizację, masz pewność, że po dniu pełnym wrażeń w Tatrach wrócisz do oazy spokoju, w której naprawdę odpoczniesz."
+        ]
+      },
+      {
+        heading: "Domek na Zrąbku – Twój prywatny widok na Giewont i Tatry",
+        paragraphs: [
+          "Domek na Zrąbku, zlokalizowany pod adresem <strong>Nowe Bystre 201B (34-521 Ząb)</strong>, to miejsce stworzone z miłości do gór. Naszym największym atutem, o którym wspominają niemal wszyscy goście, jest spektakularna panorama Tatr.",
+          "Wyobraź sobie poranek: parzysz aromatyczną kawę, wychodzisz na taras, a przed Tobą rozpościera się majestatyczny widok na Giewont i ośnieżone szczyty. Taki krajobraz towarzyszy naszym gościom każdego dnia. Co dokładnie oferuje Domek na Zrąbku?",
+          "<ul><li><strong>Prywatność i niezależność:</strong> Cały domek jest do Twojej dyspozycji. To idealne rozwiązanie dla rodzin i grup przyjaciół.</li><li><strong>Komfort i góralski design:</strong> Połączyliśmy tradycyjne, drewniane elementy wykończenia z nowoczesnym wyposażeniem, aby niczego Ci nie brakowało.</li><li><strong>Przestrzeń do relaksu:</strong> Wygodne sypialnie, w pełni wyposażona kuchnia i strefa wypoczynkowa z niesamowitym widokiem z okien.</li></ul>"
+        ]
+      },
+      {
+        heading: "Zima w Zębie – wyciągi narciarskie i trasy spacerowe",
+        paragraphs: [
+          "Zima na wysokości ponad 1000 m n.p.m. to gwarancja doskonałych warunków śniegowych, nawet gdy w dolinach brakuje już białego puchu. Nocleg w Zębie i Nowym Bystrem to strzał w dziesiątkę dla miłośników białego szaleństwa.",
+          "W bliskiej okolicy Domku na Zrąbku znajdziesz świetnie przygotowane stacje narciarskie:<br>1. <strong>Stacja Narciarska Suche:</strong> Zaledwie kilka minut jazdy samochodem. Oferuje nowoczesną kolej krzesełkową.<br>2. <strong>Wyciągi w Zębie (np. Potoczki):</strong> Idealne do nauki jazdy na nartach i snowboardzie dla najmłodszych.<br>3. <strong>Trasy biegowe i skitourowe:</strong> Okoliczne wzniesienia to raj dla fanów skitouringu z widokiem na panoramę Tatr.",
+          "A jeśli nie jeździsz na nartach? Zimowe spacery po zaśnieżonych lasach wokół Zębu to czysta przyjemność. Zawsze możesz też wybrać się na pobliską Gubałówkę, by podziwiać widoki i napić się gorącej herbaty.",
+          "<h3>Zarezerwuj bezpośrednio i oszczędzaj!</h3>",
+          "Planujesz urlop pod Tatrami? Zrezygnuj z popularnych portali rezerwacyjnych, które doliczają wysokie prowizje do Twojego pobytu (często sięgające 15-20%!). <strong>Rezerwując Domek na Zrąbku bezpośrednio przez naszą stronę internetową lub telefonicznie, masz gwarancję najniższej ceny.</strong>",
+          "<a href=\"/#kontakt\" class=\"button-primary mt-4\">Zarezerwuj swój pobyt bez prowizji</a>"
+        ]
+      }
+    ]
+  },
+  {
+    slug: "domki-pod-gubalowka-idealne-miejsce-na-wypoczynek",
+    title: "Domki pod Gubałówką. Idealne miejsce na wypoczynek bez zgiełku miasta",
+    metaTitle: "Domki pod Gubałówką - Wypoczynek bez zgiełku | Domek na Zrąbku",
+    metaDescription: "Odkryj Gubałówkę od spokojniejszej strony. Wynajmij Domek na Zrąbku w Nowym Bystrem i ciesz się bliskością natury oraz Tatr.",
+    excerpt: "Kiedy myślisz „Gubałówka”, prawdopodobnie przed oczami masz gwarny deptak. Domek na Zrąbku to miejsce, w którym odkryjesz Gubałówkę od spokojniejszej strony.",
+    category: "Lokalny przewodnik",
+    readTime: "7 min czytania",
+    seoKeywords: ["domki pod Gubałówką", "Nowe Bystre", "Domek na Zrąbku", "Gubałówka nocleg"],
+    internalLinks: [
+      { label: "Strona główna", href: "/" },
+      { label: "Galeria", href: "/galeria" },
+      { label: "Rezerwacja online", href: "/#kontakt" },
+    ],
+    sections: [
+      {
+        heading: "Gubałówka od spokojniejszej strony (Nowe Bystre)",
+        paragraphs: [
+          "Północne zbocza Pasma Gubałowskiego, na których leży miejscowość Nowe Bystre i Ząb, to prawdziwy ukryty skarb Podhala. Choć od szczytu słynnej Gubałówki dzielą nas dosłownie minuty drogi, panuje tu zupełnie inny świat.",
+          "Wybierając <strong>domki pod Gubałówką</strong> po stronie Nowego Bystrego (Nowe Bystre 201B), zyskujesz unikalny kompromis:<ul><li>Jesteś na tyle blisko, by w każdej chwili wyskoczyć na spacer słynnym grzbietem Gubałówki.</li><li>Jesteś na tyle daleko, by cieszyć się niczym niezmąconą ciszą, prywatnością i kontaktem z naturą.</li></ul>",
+          "To właśnie tutaj rozpościerają się malownicze łąki, a górskie powietrze pachnie igliwiem i wolnością. To idealna baza wypadowa do odkrywania uroków całego Skalnego Podhala."
+        ]
+      },
+      {
+        heading: "Czego spodziewać się wynajmując Domek na Zrąbku?",
+        paragraphs: [
+          "Domek na Zrąbku stworzyliśmy z myślą o gościach, którzy cenią sobie niezależność, przestrzeń i wysoki standard, zachowując przy tym autentyczny, górski klimat. Co czeka na Ciebie w środku?",
+          "<ul><li><strong>Przestrzeń, w której odetchniesz:</strong> W odróżnieniu od ciasnych pokoi hotelowych, wynajmując domek, zyskujesz pełną swobodę. Przestronny salon to idealne miejsce na wieczorne rozmowy, a oddzielne sypialnie zapewniają prywatność.</li><li><strong>W pełni wyposażona kuchnia:</strong> Chcesz przygotować szybkie śniadanie przed wyjściem w góry lub romantyczną kolację? Nasza kuchnia posiada wszystko, czego potrzebujesz.</li><li><strong>Góralski klimat w nowoczesnym wydaniu:</strong> Wnętrza pachnące naturalnym drewnem, przytulne tekstylia i dbałość o detale sprawiają, że od razu poczujesz podhalańską atmosferę.</li><li><strong>Widokowy taras:</strong> To miejsce, w którym poranna kawa smakuje najlepiej. Widok na Tatry, który z niego się roztacza, jest wliczony w cenę pobytu!</li></ul>"
+        ]
+      },
+      {
+        heading: "Atrakcje w pobliżu: gdzie na spacer z psem lub dziećmi?",
+        paragraphs: [
+          "Nasz obiekt w Zębie / Nowym Bystrem to fantastyczny wybór dla rodzin z dziećmi oraz osób podróżujących z czworonogami. Okolica zachęca do aktywnego wypoczynku z dala od ruchliwych ulic.",
+          "<h3>Rodzinne spacery</h3><ul><li><strong>Szlak na Gubałówkę:</strong> Łagodna, niezwykle widokowa trasa, idealna na rodzinny spacer. Bez problemu pokonasz ją nawet z młodszymi dziećmi.</li><li><strong>Spacer Papieski w Zębie:</strong> Przepiękna trasa prowadząca przez najwyżej położone tereny wsi, z której roztacza się panorama na całe Tatry, Gorce i Babią Górę.</li><li><strong>Termy i relaks:</strong> W niedalekiej odległości znajdują się najlepsze parki wodne na Podhalu, gdzie dzieci mogą szaleć na zjeżdżalniach.</li></ul>",
+          "<h3>Urlop z psem</h3>",
+          "Okolice Domku na Zrąbku to raj dla czworonogów. Rozległe łąki i bezpieczne, leśne ścieżki sprawiają, że Twój pupil wybiega się za wszystkie czasy. W przeciwieństwie do zatłoczonych szlaków w Tatrzańskim Parku Narodowym, u nas znajdziecie mnóstwo przestrzeni na długie, spokojne wędrówki z psem.",
+          "<h3>Zrezygnuj z prowizji Booking.com i Airbnb!</h3>",
+          "Czy wiesz, że rezerwując nocleg przez wielkie platformy rezerwacyjne, przepłacasz? Zamiast płacić prowizje zagranicznym korporacjom, zarezerwuj swój pobyt bezpośrednio. Wybierając rezerwację przez naszą stronę internetową, zyskujesz <strong>zawsze najniższą cenę (0% prowizji pośredników)</strong> oraz bezpośredni kontakt z nami.",
+          "<a href=\"/#kontakt\" class=\"button-primary mt-4\">Sprawdź wolne terminy i oszczędzaj</a>"
+        ]
+      }
+    ]
+  },
+  {
+    slug: "jesien-w-tatrach-dlaczego-domek-na-zrabku",
+    title: "Jesień w Tatrach – dlaczego Domek na Zrąbku to strzał w dziesiątkę?",
+    metaTitle: "Jesień w Tatrach - Nocleg bez prowizji | Domek na Zrąbku",
+    metaDescription: "Jesienny urlop w Tatrach bez tłumów. Sprawdź Domek na Zrąbku w Zębie - piękne widoki, ciepłe wnętrza i rezerwacja bez ukrytych opłat.",
+    excerpt: "Prawdziwi koneserzy gór wiedzą doskonale, że Tatry najpiękniejsze są... jesienią! Złote kolory lasów, stabilna pogoda, brak tłumów na szlakach.",
+    category: "Wypoczynek w górach",
+    readTime: "6 min czytania",
+    seoKeywords: ["jesień w Tatrach", "Domek na Zrąbku", "tani nocleg Ząb", "rezerwacja bez prowizji nocleg"],
+    internalLinks: [
+      { label: "Strona główna", href: "/" },
+      { label: "Galeria", href: "/galeria" },
+      { label: "Rezerwacja online", href: "/#kontakt" },
+    ],
+    sections: [
+      {
+        heading: "Jesienne widoki z wysokości ponad 1000 m n.p.m.",
+        paragraphs: [
+          "Położenie naszego domku w rejonie Zębu, najwyżej położonej wsi w Polsce, ma jesienią ogromne znaczenie. Dlaczego? Przede wszystkim z powodu <strong>inwersji temperatur</strong>.",
+          "Bardzo często zdarza się, że jesienią Zakopane i niżej położone doliny toną w gęstych, chłodnych mgłach i chmurach. Tymczasem u nas, na wysokości powyżej 1000 m n.p.m., świeci piękne słońce, a chmury tworzą pod nami spektakularne, puszyste „morze mgieł”, z którego wyłaniają się jedynie najwyższe szczyty Tatr. To zjawisko, dla którego fotografowie z całej Polski przyjeżdżają na Podhale!",
+          "Dodatkowo, z tarasu Domku na Zrąbku możesz podziwiać, jak z każdym tygodniem liściaste lasy regla dolnego zmieniają barwy od soczystej zieleni, przez złoto, aż po głęboką czerwień, idealnie kontrastując z surowymi skałami Giewontu."
+        ]
+      },
+      {
+        heading: "Wieczory z górskim klimatem – odpoczynek po wędrówkach",
+        paragraphs: [
+          "Jesień to idealny czas na długie wędrówki. Szlaki w Tatrach są wreszcie puste. Nie musisz stać w kolejce na Giewont ani przeciskać się przez tłumy nad Morskim Okiem. Temperatury są idealne do trekkingu – nie męczy Cię upał, a widoczność jest krystalicznie czysta.",
+          "Jednak po aktywnym dniu w górach, dni stają się krótsze i chłodniejsze. To właśnie wtedy najbardziej docenisz przytulność Domku na Zrąbku.<ul><li><strong>Ciepło i wygoda:</strong> Nasz domek jest doskonale ogrzewany. Po powrocie ze szlaku szybko się rozgrzejesz.</li><li><strong>Wieczorny relaks:</strong> Wyobraź sobie jesienny wieczór: za oknem wiatr i górski chłód, a Ty siedzisz z kubkiem gorącej herbaty z malinami w dłoni, zerkając na rozgwieżdżone niebo.</li><li><strong>Regeneracja przed kolejnym dniem:</strong> Wygodne materace w naszych sypialniach zadbają o to, byś rano obudził się pełen energii na kolejne podboje górskich szczytów.</li></ul>"
+        ]
+      },
+      {
+        heading: "Omijaj prowizje – rezerwuj Domek na Zrąbku najtaniej przez naszą stronę",
+        paragraphs: [
+          "Złota polska jesień to świetny moment, aby zorganizować budżetowy wyjazd w góry. Poza sezonem wysokim ceny są znacznie atrakcyjniejsze, a my mamy dla Ciebie sposób, by zaoszczędzić jeszcze więcej.",
+          "Portale takie jak Booking czy Airbnb są wygodne, ale pobierają od gospodarzy prowizję, która ostatecznie ukryta jest w cenie, którą płacisz. <strong>Rezerwując nocleg bezpośrednio u nas, omijasz pośredników i ich wysokie opłaty.</strong>",
+          "Dlaczego warto rezerwować bezpośrednio na naszej stronie?<ul><li><strong>Gwarancja najniższej ceny</strong> – u nas zawsze zapłacisz mniej niż na portalach rezerwacyjnych.</li><li><strong>Przejrzyste warunki</strong> – brak ukrytych opłat manipulacyjnych czy serwisowych.</li><li><strong>Wsparcie lokalnego biznesu</strong> – cała kwota wspiera rozwój naszego obiektu, co pozwala nam podnosić standard dla Ciebie!</li></ul>",
+          "Nie przepłacaj za swój jesienny relaks. Spakuj wygodne buty, aparat fotograficzny i zarezerwuj swój pobyt z widokiem na majestatyczne Tatry.",
+          "<a href=\"/#kontakt\" class=\"button-primary mt-4\">Zarezerwuj bezpośrednio i zyskaj najlepszą cenę</a>"
+        ]
+      }
+    ]
+  }
 ];
 
 export const featuredBlogArticles = blogArticles.slice(0, 3);

@@ -123,10 +123,12 @@ export function BlogArticleSection({ article }: { article: BlogArticle }) {
             <section key={section.heading} className="max-w-4xl">
               <h2 className="font-display text-3xl text-[var(--color-deep)] sm:text-4xl">{section.heading}</h2>
               <div className="mt-5 grid gap-5">
-                {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="text-[15px] leading-8 text-[var(--color-muted)] sm:text-base">
-                    {paragraph}
-                  </p>
+                {section.paragraphs.map((paragraph, idx) => (
+                  <div 
+                    key={idx} 
+                    className="blog-content text-[15px] leading-8 text-[var(--color-muted)] sm:text-base"
+                    dangerouslySetInnerHTML={{ __html: paragraph }}
+                  />
                 ))}
               </div>
             </section>

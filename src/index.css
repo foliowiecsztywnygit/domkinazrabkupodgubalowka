@@ -93,6 +93,34 @@ textarea {
     @apply mt-4 font-display text-4xl leading-[1.02] text-[var(--color-deep)] sm:text-5xl lg:text-6xl;
   }
 
+  .blog-content strong {
+    @apply font-semibold text-[var(--color-deep)];
+  }
+
+  .blog-content ul {
+    @apply mt-2 mb-4 list-outside list-disc space-y-2 pl-6;
+  }
+
+  .blog-content ol {
+    @apply mt-2 mb-4 list-outside list-decimal space-y-2 pl-6;
+  }
+
+  .blog-content li {
+    @apply pl-1;
+  }
+
+  .blog-content p {
+    @apply mb-4;
+  }
+
+  .blog-content h3 {
+    @apply mt-8 mb-3 font-display text-2xl text-[var(--color-deep)] sm:text-3xl;
+  }
+
+  .blog-content a {
+    @apply font-semibold text-[var(--color-accent-dark)] transition duration-300 hover:text-[var(--color-accent)];
+  }
+
   .nav-link {
     @apply text-xs font-medium uppercase tracking-[0.24em] text-[rgba(255,239,212,0.7)] transition duration-300 hover:text-[var(--color-cream)];
   }
