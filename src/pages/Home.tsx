@@ -1,6 +1,6 @@
 import { Footer, ContactSection, FaqSection, MobileStickyReservationBar, ReviewsSection } from "@/components/BottomSections";
 import { BlogPreviewSection } from "@/components/BlogSections";
-import { LocationSection } from "@/components/MidSections";
+import { BaliaSection, LocationSection } from "@/components/MidSections";
 import { AboutSection, GallerySection, HeroSection, Navbar, ValuePropsSection } from "@/components/UpperSections";
 
 export default function Home() {
@@ -12,6 +12,7 @@ export default function Home() {
         <ValuePropsSection />
         <AboutSection />
         <GallerySection />
+        <BaliaSection />
         <LocationSection />
         <BlogPreviewSection />
         <ReviewsSection />

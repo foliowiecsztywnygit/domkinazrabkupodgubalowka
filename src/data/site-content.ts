@@ -398,3 +398,29 @@ export const socialItems = [{ label: "Mapa Google", href: "#lokalizacja" }] as c
 
 export const googleMapsEmbed =
   "https://www.google.com/maps?q=Nowe+Bystre+201B,+34-521+Z%C4%85b&output=embed";
+
+export const baliaPhotos = [
+  {
+    src: "/balia/12612501-75c7-4c46-a745-01a3727eec71.jpeg",
+    alt: "Drewniana balia ogrodowa z gorącą wodą przy domkach",
+  },
+  {
+    src: "/balia/a2578e60-62f3-448f-9cf7-82ef063614dc.jpeg",
+    alt: "Balia z widokiem na górski krajobraz",
+  },
+  {
+    src: "/balia/d4b38409-57cf-4b14-9900-24267fd083ad.jpeg",
+    alt: "Relaks w balii przy zachodzie słońca",
+  },
+  {
+    src: "/balia/f92e9c61-e7c5-4e9d-9b5d-c4cb8ba310da.jpeg",
+    alt: "Drewniana balia w otoczeniu zieleni i drzew",
+  },
+] as const;
+
+export const baliaInfo = {
+  title: "Dodatkowy relaks w balii ogrodowej",
+  description:
+    "Dla gości, którzy chcą podkreślić wyjątkowy charakter pobytu, mamy do zaoferowania drewnianą balię ogrodową z gorącą wodą. Idealna na wieczorne rozmowy, relaks po dniu spędzonym na szlaku lub romantyczny akcent weekendu.",
+  note: "Balia jest dostępna za dodatkową opłatą i wymaga wcześniejszej rezerwacji — poinformuj nas o chęci skorzystania przy rezerwowaniu domku, a my przygotujemy wszystko pod Twój przyjazd.",
+} as const;
