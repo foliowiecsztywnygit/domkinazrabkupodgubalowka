@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 
 import { Reveal, SectionIntro } from "@/components/SectionAtoms";
 import { blogArticles, featuredBlogArticles, getRelatedBlogArticles, type BlogArticle } from "@/data/blog-content";
 
 function BlogMeta({ article }: { article: BlogArticle }) {
+  const wordCount = article.content.split(/\s+/).length;
+  const readTime = Math.max(1, Math.ceil(wordCount / 200));
+
   return (
     <div className="flex flex-wrap gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
-      <span>{article.category}</span>
-      <span>{article.readTime}</span>
-      <span>{article.metaTitle}</span>
+      <span>{article.date}</span>
+      <span>{readTime} min czytania</span>
     </div>
   );
 }
@@ -26,9 +29,8 @@ function BlogCard({
 }) {
   return (
     <div className="ambient-card p-7">
-      <p className="section-kicker">{article.category}</p>
       <h3 className="mt-5 font-display text-3xl leading-tight text-[var(--color-deep)]">{article.title}</h3>
-      <p className="mt-5 text-sm leading-7 text-[var(--color-muted)]">{article.excerpt}</p>
+      <p className="mt-5 text-sm leading-7 text-[var(--color-muted)]">{article.description}</p>
       <div className="mt-6">
         <BlogMeta article={article} />
       </div>
@@ -110,49 +112,39 @@ export function BlogArticleSection({ article }: { article: BlogArticle }) {
 
       <Reveal as="article" className="ambient-card mt-10 p-6 sm:p-8 lg:p-10">
         <div className="max-w-5xl">
-          <p className="section-kicker">{article.category}</p>
           <h1 className="mt-5 font-display text-4xl leading-[1.02] text-[var(--color-deep)] sm:text-5xl lg:text-6xl">{article.title}</h1>
-          <p className="mt-6 max-w-3xl text-base leading-8 text-[var(--color-muted)]">{article.excerpt}</p>
+          <p className="mt-6 max-w-3xl text-base leading-8 text-[var(--color-muted)]">{article.description}</p>
           <div className="mt-8">
             <BlogMeta article={article} />
           </div>
         </div>
 
-        <div className="mt-12 grid gap-10">
-          {article.sections.map((section) => (
-            <section key={section.heading} className="max-w-4xl">
-              <h2 className="font-display text-3xl text-[var(--color-deep)] sm:text-4xl">{section.heading}</h2>
-              <div className="mt-5 grid gap-5">
-                {section.paragraphs.map((paragraph, idx) => (
-                  <div 
-                    key={idx} 
-                    className="blog-content text-[15px] leading-8 text-[var(--color-muted)] sm:text-base"
-                    dangerouslySetInnerHTML={{ __html: paragraph }}
-                  />
-                ))}
-              </div>
-            </section>
-          ))}
+        <div className="mt-12 max-w-4xl">
+          <div className="blog-content prose prose-lg prose-headings:font-display prose-headings:text-[var(--color-deep)] prose-p:text-[var(--color-muted)] prose-a:text-blue-600 prose-li:text-[var(--color-muted)]">
+            <ReactMarkdown>{article.content}</ReactMarkdown>
+          </div>
         </div>
       </Reveal>
 
-      <Reveal className="surface-panel mt-10 p-6 sm:p-8">
-        <p className="section-kicker">Podobne artykuły</p>
-        <h2 className="mt-4 font-display text-4xl text-[var(--color-deep)]">Czytaj dalej w podobnym rytmie.</h2>
-        <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--color-muted)]">
-          Jeśli chcesz zostać tu jeszcze chwilę dłużej, sięgnij po kolejne teksty o pobycie, spacerach i spokojniejszej stronie Podhala.
-        </p>
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {relatedArticles.map((relatedArticle) => (
-            <BlogCard
-              key={relatedArticle.slug}
-              article={relatedArticle}
-              actionLabel="Przejdź do artykułu"
-              actionHref={`/blog/${relatedArticle.slug}`}
-            />
-          ))}
-        </div>
-      </Reveal>
+      {relatedArticles.length > 0 && (
+        <Reveal className="surface-panel mt-10 p-6 sm:p-8">
+          <p className="section-kicker">Podobne artykuły</p>
+          <h2 className="mt-4 font-display text-4xl text-[var(--color-deep)]">Czytaj dalej w podobnym rytmie.</h2>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--color-muted)]">
+            Jeśli chcesz zostać tu jeszcze chwilę dłużej, sięgnij po kolejne teksty o pobycie, spacerach i spokojniejszej stronie Podhala.
+          </p>
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            {relatedArticles.map((relatedArticle) => (
+              <BlogCard
+                key={relatedArticle.slug}
+                article={relatedArticle}
+                actionLabel="Przejdź do artykułu"
+                actionHref={`/blog/${relatedArticle.slug}`}
+              />
+            ))}
+          </div>
+        </Reveal>
+      )}
     </section>
   );
 }
