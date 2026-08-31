@@ -1,6 +1,6 @@
 ---
 title: "Witamy na nowym blogu"
-description: "Pierwszy zautomatyzowany wpis za pomocą systemu GitOps na nowym blogu domków."
+description: "Pierwszy zautomatyzowany wpis na nowym blogu domków."
 date: "2026-08-30"
 slug: "witamy-na-blogu"
 ---
