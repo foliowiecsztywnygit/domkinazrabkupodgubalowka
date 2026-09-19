@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { ChevronDown, Phone, Quote, Star } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -13,7 +13,7 @@ export function ReviewsSection() {
       <SectionIntro
         eyebrow="Opinie"
         title={`${contactDetails.rating} na podstawie ${contactDetails.reviewCount} opinii`}
-        description="Kilka krótkich słów, które potwierdzają to, co najważniejsze: czystość, spokój, jakość pobytu i przyjemność z samego przebywania w tym miejscu."
+        description="Kilka krĂłtkich sĹ‚Ăłw, ktĂłre potwierdzajÄ… to, co najwaĹĽniejsze: czystoĹ›Ä‡, spokĂłj, jakoĹ›Ä‡ pobytu i przyjemnoĹ›Ä‡ z samego przebywania w tym miejscu."
       />
       <div className="mt-14 grid gap-5 lg:grid-cols-3">
         {reviews.map((review, index) => (
@@ -41,7 +41,7 @@ export function FaqSection() {
       <SectionIntro
         eyebrow="FAQ"
         title="Lokalne pytania, konkretne odpowiedzi."
-        description="Zebraliśmy pytania, które najczęściej pojawiają się przed przyjazdem do Zębu, Nowego Bystrego i okolic Gubałówki."
+        description="ZebraliĹ›my pytania, ktĂłre najczÄ™Ĺ›ciej pojawiajÄ… siÄ™ przed przyjazdem do ZÄ™bu, Nowego Bystrego i okolic GubaĹ‚Ăłwki."
       />
       <div className="mt-12 divide-y divide-[rgba(137,107,65,0.16)] rounded-[2.2rem] border border-[rgba(137,107,65,0.16)] bg-[rgba(255,250,245,0.8)] px-6 sm:px-8">
         {faqItems.map((item, index) => {
@@ -81,8 +81,8 @@ export function ContactSection() {
           <div className="flex flex-col justify-between gap-8">
             <SectionIntro
               eyebrow="Rezerwacja online i kontakt"
-              title="Sprawdź termin i zarezerwuj bezpośrednio."
-              description="Tutaj możesz od razu sprawdzić termin, przejść do rezerwacji albo skontaktować się z nami telefonicznie."
+              title="SprawdĹş termin i zarezerwuj bezpoĹ›rednio."
+              description="Tutaj moĹĽesz od razu sprawdziÄ‡ termin, przejĹ›Ä‡ do rezerwacji albo skontaktowaÄ‡ siÄ™ z nami telefonicznie."
               dark
             />
             <Reveal delayClassName="delay-1" className="grid gap-4 text-[var(--color-cream)]">
@@ -92,18 +92,18 @@ export function ContactSection() {
               </a>
               <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="contact-chip">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-xs font-semibold uppercase tracking-[0.2em]">24/7</span>
-                <span>Przejdź do rezerwacji online</span>
+                <span>PrzejdĹş do rezerwacji online</span>
               </a>
             </Reveal>
           </div>
           <Reveal delayClassName="delay-2" className="rounded-[2.2rem] border border-white/10 bg-white/[0.04] p-3 backdrop-blur-sm sm:p-4">
             <div className="booking-widget-shell">
-              <iframe title="Widżet rezerwacji online" src={bookingWidgetUrl} className="booking-widget-frame" loading="lazy" />
+              <iframe title="WidĹĽet rezerwacji online" src={bookingWidgetUrl} className="booking-widget-frame" loading="lazy" />
             </div>
             <div className="mt-4 flex flex-col gap-3 px-2 pb-2 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm text-[rgba(255,243,226,0.68)]">Jeśli wolisz, możesz też otworzyć rezerwację w osobnej karcie.</p>
+              <p className="text-sm text-[rgba(255,243,226,0.68)]">JeĹ›li wolisz, moĹĽesz teĹĽ otworzyÄ‡ rezerwacjÄ™ w osobnej karcie.</p>
               <a href={bookingWidgetUrl} target="_blank" rel="noreferrer" className="button-primary justify-center">
-                Otwórz rezerwację
+                OtwĂłrz rezerwacjÄ™
               </a>
             </div>
           </Reveal>
@@ -118,8 +118,8 @@ export function ContactSection() {
         <div className="flex flex-col justify-between gap-8">
           <SectionIntro
             eyebrow="Terminy i kontakt"
-            title="Sprawdź wolny termin i przejdź od razu do dostępności."
-            description="Na dole strony też możesz wygodnie wybrać daty pobytu i liczbę gości. Całość prowadzi prosto do sprawdzenia dostępności."
+            title="SprawdĹş wolny termin i przejdĹş od razu do dostÄ™pnoĹ›ci."
+            description="Na dole strony teĹĽ moĹĽesz wygodnie wybraÄ‡ daty pobytu i liczbÄ™ goĹ›ci. CaĹ‚oĹ›Ä‡ prowadzi prosto do sprawdzenia dostÄ™pnoĹ›ci."
             dark
           />
           <Reveal delayClassName="delay-1" className="grid gap-4 text-[var(--color-cream)]">
@@ -128,23 +128,23 @@ export function ContactSection() {
               <span>{contactDetails.phone}</span>
             </a>
             <p className="max-w-md text-sm leading-7 text-[rgba(255,243,226,0.68)]">
-              Wybierz termin w nowoczesnym kalendarzu i sprawdź dostępność bez zbędnych kroków.
+              Wybierz termin w nowoczesnym kalendarzu i sprawdĹş dostÄ™pnoĹ›Ä‡ bez zbÄ™dnych krokĂłw.
             </p>
           </Reveal>
         </div>
         <Reveal delayClassName="delay-2" className="rounded-[2.2rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm sm:p-6">
-          <form className="grid gap-5" aria-label="Sprawdzarka terminów w sekcji kontakt">
+          <form className="grid gap-5" aria-label="Sprawdzarka terminĂłw w sekcji kontakt">
             <AvailabilityBar variant="contact" />
             <div className="rounded-[1.6rem] border border-[rgba(221,182,111,0.16)] bg-[rgba(255,248,235,0.05)] px-5 py-4 text-sm leading-7 text-[rgba(255,243,226,0.82)]">
-              Wybierasz termin i liczbę gości tutaj na stronie, a potem przechodzisz prosto do widoku dostępności z już ustawionymi danymi.
+              Wybierasz termin i liczbÄ™ goĹ›ci tutaj na stronie, a potem przechodzisz prosto do widoku dostÄ™pnoĹ›ci z juĹĽ ustawionymi danymi.
             </div>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm leading-7 text-[rgba(255,243,226,0.72)]">
-                Jeśli wolisz kontakt bezpośredni, możesz też zadzwonić i potwierdzić szczegóły pobytu.
+                JeĹ›li wolisz kontakt bezpoĹ›redni, moĹĽesz teĹĽ zadzwoniÄ‡ i potwierdziÄ‡ szczegĂłĹ‚y pobytu.
               </p>
               <a href={contactDetails.phoneHref} className="button-secondary hero-widget-secondary-action justify-center sm:min-w-[240px]">
                 <Phone size={16} strokeWidth={1.6} />
-                <span>Zadzwoń teraz</span>
+                <span>ZadzwoĹ„ teraz</span>
               </a>
             </div>
           </form>
@@ -184,7 +184,7 @@ export function Footer() {
     <footer className="bg-[var(--color-deep)] px-4 pb-10 text-[var(--color-cream)]">
       <div className="mx-auto grid max-w-6xl gap-8 rounded-[2rem] border border-white/10 bg-[rgba(255,255,255,0.02)] px-6 py-8 sm:px-8 lg:grid-cols-[1.1fr_0.9fr_0.8fr]">
         <div>
-          <p className="font-display text-3xl">Domki na Zrąbku Pod Gubałówką</p>
+          <p className="font-display text-3xl">Domki na ZrÄ…bku Pod GubaĹ‚ĂłwkÄ…</p>
           <p className="mt-4 max-w-md text-sm leading-7 text-[rgba(255,243,226,0.72)]">{contactDetails.address}</p>
           <a href={contactDetails.phoneHref} className="mt-4 inline-block text-sm uppercase tracking-[0.22em] text-[var(--color-accent)]">
             {contactDetails.phone}
@@ -199,7 +199,7 @@ export function Footer() {
               </a>
             ))}
             <Link to="/galeria" className="text-sm text-[rgba(255,243,226,0.82)] transition hover:text-white">
-              Pełna galeria
+              PeĹ‚na galeria
             </Link>
             <Link to="/blog" className="text-sm text-[rgba(255,243,226,0.82)] transition hover:text-white">
               Blog
@@ -225,9 +225,11 @@ export function Footer() {
           rel="noreferrer"
           className="transition hover:text-[var(--color-accent)]"
         >
-          Krzysztof Żebrowski
+          brosystems.pl
         </a>
       </div>
     </footer>
   );
 }
+
+
