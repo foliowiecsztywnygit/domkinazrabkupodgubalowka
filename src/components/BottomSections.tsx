@@ -220,7 +220,7 @@ export function Footer() {
       <div className="mx-auto mt-4 max-w-6xl text-center text-xs tracking-[0.18em] text-[rgba(255,243,226,0.56)]">
         <span>Wykonanie i Hosting: </span>
         <a
-          href="https://webbroskidev.pl"
+          href="https://brosystems.pl"
           target="_blank"
           rel="noreferrer"
           className="transition hover:text-[var(--color-accent)]"
